@@ -1,0 +1,15 @@
+name: mr-meeseeks-linter
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+jobs:
+  make-lint:
+    name: eslint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run make lint
+        run: make lint
