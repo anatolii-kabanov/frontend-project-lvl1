@@ -2,5 +2,5 @@
 import program from '../src/cli.js';
 
 (async () => {
-    await program();
+  await program();
 })();
