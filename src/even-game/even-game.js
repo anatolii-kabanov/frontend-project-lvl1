@@ -1,6 +1,6 @@
 import promptly from 'promptly';
-import gameResult from './constants/game-result.constant.js';
-import answer from './constants/answer.constant.js';
+import gameResult from '../constants/game-result.constant.js';
+import answer from '../constants/answer.constant.js';
 
 const rightAnswersToWin = 3;
 const maxNumber = 1000;
