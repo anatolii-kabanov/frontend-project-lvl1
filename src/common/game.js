@@ -15,8 +15,8 @@ class Game {
     }
   }
 
-  static getRandomInt(max = Number.MAX_SAFE_INTEGER) {
-    return Math.floor(Math.random() * Math.floor(max));
+  static getRandomInt(max = Number.MAX_SAFE_INTEGER, startNumber = 0) {
+    return Math.floor(Math.random() * Math.floor(max)) + startNumber;
   }
 
   gameGreetings() {
