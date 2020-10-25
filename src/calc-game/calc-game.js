@@ -7,7 +7,7 @@ const mathSigns = {
 };
 
 class CalcGame extends BaseGame {
-  constructor(rightAnswersToWin = 5, maxGeneratedNumber = 100) {
+  constructor(rightAnswersToWin = 3, maxGeneratedNumber = 100) {
     super(
       rightAnswersToWin,
       maxGeneratedNumber,

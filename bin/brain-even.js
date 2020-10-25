@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-import program from '../src/even-game/even-game.js';
+import EvenGame from '../src/even-game/even-game.js';
 
 (async () => {
-  await program();
+  const evenGame = new EvenGame();
+  await evenGame.runAsync();
 })();
