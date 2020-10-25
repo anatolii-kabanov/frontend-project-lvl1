@@ -1,5 +1,6 @@
 import promptly from 'promptly';
 import gameResult from '../constants/game-result.constant.js';
+import answer from '../constants/answer.constant.js';
 
 class Game {
   constructor(
@@ -13,6 +14,10 @@ class Game {
     if (typeof this.generateQuestionAndAnswer !== 'function') {
       throw new Error('Implement generateQuestionAndAnswer function');
     }
+  }
+
+  static convertToAnswerString(flag) {
+    return flag ? answer.YES : answer.NO;
   }
 
   static getRandomInt(max = Number.MAX_SAFE_INTEGER, startNumber = 0) {
