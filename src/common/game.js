@@ -2,37 +2,30 @@ import promptly from 'promptly';
 import gameResult from '../constants/game-result.constant.js';
 import answer from '../constants/answer.constant.js';
 
-class Game {
-  constructor(
-    rightAnswersToWin = 3,
-    maxGeneratedNumber = 1000,
-    greetingsMessage,
-  ) {
-    this.rightAnswersToWin = rightAnswersToWin;
-    this.maxGeneratedNumber = maxGeneratedNumber;
-    this.greetingsMessage = greetingsMessage;
-    if (typeof this.generateQuestionAndAnswer !== 'function') {
-      throw new Error('Implement generateQuestionAndAnswer function');
-    }
-  }
+export default function Game(
+  rightAnswersToWin = 3,
+  maxGeneratedNumber = 1000,
+  greetingsMessage,
+) {
+  this.rightAnswersToWin = rightAnswersToWin;
+  this.maxGeneratedNumber = maxGeneratedNumber;
+  this.greetingsMessage = greetingsMessage;
 
-  static convertToAnswerString(flag) {
-    return flag ? answer.YES : answer.NO;
-  }
-
-  static getRandomInt(max = Number.MAX_SAFE_INTEGER, startNumber = 0) {
-    return Math.floor(Math.random() * Math.floor(max)) + startNumber;
-  }
-
-  gameGreetings() {
+  this.gameGreetings = () => {
     console.log(this.greetingsMessage);
-  }
+  };
 
-  async readUserName() {
+  this.readUserName = async () => {
     this.userName = await promptly.prompt('May I have your name? ');
-  }
+  };
 
-  async runGameAsync() {
+  this.convertToAnswerString = (flag) => (flag ? answer.YES : answer.NO);
+
+  this.getRandomInt = (max = Number.MAX_SAFE_INTEGER, startNumber = 0) => (
+    Math.floor(Math.random() * Math.floor(max)) + startNumber
+  );
+
+  this.runGameAsync = async () => {
     for (let i = 0; i < this.rightAnswersToWin; i += 1) {
       const qaObject = this.generateQuestionAndAnswer();
       console.log(`Question: ${qaObject.question}`);
@@ -47,9 +40,9 @@ class Game {
       console.log('Correct!');
     }
     return gameResult.SUCCESS;
-  }
+  };
 
-  async runAsync() {
+  this.runAsync = async () => {
     console.log('Welcome to the Brain Games!');
     await this.readUserName();
     console.log(`Hello, ${this.userName}!`);
@@ -65,7 +58,5 @@ class Game {
       default:
         break;
     }
-  }
+  };
 }
-
-export default Game;

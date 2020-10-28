@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-import ProgressionGame from '../src/progression-game/progression-game.js';
+import progressionGame from '../src/games/progression-game/progression-game.js';
 
 (async () => {
-  const progressionGame = new ProgressionGame();
-  await progressionGame.runAsync();
+  const game = progressionGame();
+  await game.runAsync();
 })();
