@@ -43,20 +43,24 @@ export default function Game(
   };
 
   this.runAsync = async () => {
-    console.log('Welcome to the Brain Games!');
-    await this.readUserName();
-    console.log(`Hello, ${this.userName}!`);
-    this.gameGreetings();
-    const result = await this.runGameAsync();
-    switch (result) {
-      case gameResult.SUCCESS:
-        console.log(`Congratulations, ${this.userName}!`);
-        break;
-      case gameResult.FAIL:
-        console.log(`Let's try again, ${this.userName}!`);
-        break;
-      default:
-        break;
+    try {
+      console.log('Welcome to the Brain Games!');
+      await this.readUserName();
+      console.log(`Hello, ${this.userName}!`);
+      this.gameGreetings();
+      const result = await this.runGameAsync();
+      switch (result) {
+        case gameResult.SUCCESS:
+          console.log(`Congratulations, ${this.userName}!`);
+          break;
+        case gameResult.FAIL:
+          console.log(`Let's try again, ${this.userName}!`);
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 }
