@@ -23,4 +23,4 @@ publish:
 	npm publish --dry-run
 
 lint:
-	npx eslint "src/** bin/**"
+	npx eslint './src/** ./bin/**'
