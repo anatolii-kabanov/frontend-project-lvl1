@@ -1,21 +1,19 @@
-import BaseGame from '../../common/game.js';
+import baseGame from '../../common/game.js';
+import getRandomInt from '../../utils/random-int.js';
 
 const options = {
   maxItems: 10,
   minItems: 5,
 };
 
-const progressionGame = (rightAnswersToWin = 3, maxGeneratedNumber = 100) => {
-  const baseGame = new BaseGame(
-    rightAnswersToWin,
-    maxGeneratedNumber,
-    'What number is missing in the progression?',
-  );
-  baseGame.generateQuestionAndAnswer = () => {
-    const startNumber = baseGame.getRandomInt(baseGame.maxGeneratedNumber);
-    const progressionNumber = baseGame.getRandomInt(baseGame.maxGeneratedNumber);
-    const arraySize = baseGame.getRandomInt(options.maxItems, options.minItems);
-    const indexToSkip = baseGame.getRandomInt(arraySize - 1);
+const maxGeneratedNumber = 100;
+
+const progressionGame = async () => {
+  const generateQuestionAndAnswer = () => {
+    const startNumber = getRandomInt(maxGeneratedNumber);
+    const progressionNumber = getRandomInt(maxGeneratedNumber);
+    const arraySize = getRandomInt(options.maxItems, options.minItems);
+    const indexToSkip = getRandomInt(arraySize - 1);
     const questionArray = Array.from(Array(arraySize)).map((_value, index) => (indexToSkip !== index ? startNumber + progressionNumber * index : '..'));
     const resultObject = {
       question: `${questionArray.join(' ')}`,
@@ -25,7 +23,10 @@ const progressionGame = (rightAnswersToWin = 3, maxGeneratedNumber = 100) => {
     return resultObject;
   };
 
-  return baseGame;
+  await baseGame(
+    'What number is missing in the progression?',
+    generateQuestionAndAnswer,
+  );
 };
 
 export default progressionGame;

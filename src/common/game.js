@@ -1,33 +1,12 @@
 import promptly from 'promptly';
 import gameResult from '../constants/game-result.constant.js';
-import answer from '../constants/answer.constant.js';
 
-export default function Game(
-  rightAnswersToWin = 3,
-  maxGeneratedNumber = 1000,
-  greetingsMessage,
-) {
-  this.rightAnswersToWin = rightAnswersToWin;
-  this.maxGeneratedNumber = maxGeneratedNumber;
-  this.greetingsMessage = greetingsMessage;
+const rightAnswersToWin = 3;
 
-  this.gameGreetings = () => {
-    console.log(this.greetingsMessage);
-  };
-
-  this.readUserName = async () => {
-    this.userName = await promptly.prompt('May I have your name? ');
-  };
-
-  this.convertToAnswerString = (flag) => (flag ? answer.YES : answer.NO);
-
-  this.getRandomInt = (max = Number.MAX_SAFE_INTEGER, startNumber = 0) => (
-    Math.floor(Math.random() * Math.floor(max)) + startNumber
-  );
-
-  this.runGameAsync = async () => {
-    for (let i = 0; i < this.rightAnswersToWin; i += 1) {
-      const qaObject = this.generateQuestionAndAnswer();
+const game = async (greetingsMessage, generateQuestionAndAnswer) => {
+  const runGameAsync = async () => {
+    for (let i = 0; i < rightAnswersToWin; i += 1) {
+      const qaObject = generateQuestionAndAnswer();
       console.log(`Question: ${qaObject.question}`);
       // eslint-disable-next-line no-await-in-loop
       const userAnswer = await promptly.prompt('Your answer: ');
@@ -42,25 +21,25 @@ export default function Game(
     return gameResult.SUCCESS;
   };
 
-  this.runAsync = async () => {
-    try {
-      console.log('Welcome to the Brain Games!');
-      await this.readUserName();
-      console.log(`Hello, ${this.userName}!`);
-      this.gameGreetings();
-      const result = await this.runGameAsync();
-      switch (result) {
-        case gameResult.SUCCESS:
-          console.log(`Congratulations, ${this.userName}!`);
-          break;
-        case gameResult.FAIL:
-          console.log(`Let's try again, ${this.userName}!`);
-          break;
-        default:
-          break;
-      }
-    } catch (error) {
-      console.error(error);
+  try {
+    console.log('Welcome to the Brain Games!');
+    const userName = await promptly.prompt('May I have your name? ');
+    console.log(`Hello, ${userName}!`);
+    console.log(greetingsMessage);
+    const result = await runGameAsync();
+    switch (result) {
+      case gameResult.SUCCESS:
+        console.log(`Congratulations, ${userName}!`);
+        break;
+      case gameResult.FAIL:
+        console.log(`Let's try again, ${userName}!`);
+        break;
+      default:
+        break;
     }
-  };
-}
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export default game;

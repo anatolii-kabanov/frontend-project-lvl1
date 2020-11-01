@@ -1,28 +1,13 @@
-import BaseGame from '../../common/game.js';
+import baseGame from '../../common/game.js';
+import getRandomInt from '../../utils/random-int.js';
+import gcd from '../../utils/gcd.js';
 
-const gcd = (firstNumber, secondNumber) => {
-  if (typeof firstNumber !== 'number' || typeof secondNumber !== 'number') {
-    throw new Error('Put numbers to this function');
-  }
-  let x = Math.abs(firstNumber);
-  let y = Math.abs(secondNumber);
-  while (y) {
-    const temp = y;
-    y = x % y;
-    x = temp;
-  }
-  return `${x}`;
-};
+const maxGeneratedNumber = 100;
 
-const gcdGame = (rightAnswersToWin = 3, maxGeneratedNumber = 100) => {
-  const baseGame = new BaseGame(
-    rightAnswersToWin,
-    maxGeneratedNumber,
-    'Find the greatest common divisor of given numbers.',
-  );
-  baseGame.generateQuestionAndAnswer = () => {
-    const firstNumber = baseGame.getRandomInt(baseGame.maxGeneratedNumber);
-    const secondNumber = baseGame.getRandomInt(baseGame.maxGeneratedNumber);
+const gcdGame = async () => {
+  const generateQuestionAndAnswer = () => {
+    const firstNumber = getRandomInt(maxGeneratedNumber);
+    const secondNumber = getRandomInt(maxGeneratedNumber);
     const resultObject = {
       question: `${firstNumber} ${secondNumber}`,
       answer: gcd(firstNumber, secondNumber),
@@ -31,7 +16,10 @@ const gcdGame = (rightAnswersToWin = 3, maxGeneratedNumber = 100) => {
     return resultObject;
   };
 
-  return baseGame;
+  await baseGame(
+    'Find the greatest common divisor of given numbers.',
+    generateQuestionAndAnswer,
+  );
 };
 
 export default gcdGame;

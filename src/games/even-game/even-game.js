@@ -1,4 +1,6 @@
-import BaseGame from '../../common/game.js';
+import baseGame from '../../common/game.js';
+import getRandomInt from '../../utils/random-int.js';
+import convertToAnswerString from '../../utils/boolean-to-yes-no-string.js';
 
 const isEven = (number) => {
   if (typeof number !== 'number') {
@@ -7,16 +9,13 @@ const isEven = (number) => {
   return number % 2 === 0;
 };
 
-const evenGame = (rightAnswersToWin = 3, maxGeneratedNumber = 100) => {
-  const baseGame = new BaseGame(
-    rightAnswersToWin,
-    maxGeneratedNumber,
-    'Answer "yes" if the number is even, otherwise answer "no".',
-  );
-  baseGame.generateQuestionAndAnswer = () => {
-    const number = baseGame.getRandomInt(baseGame.maxGeneratedNumber);
+const maxGeneratedNumber = 100;
+
+const evenGame = async () => {
+  const generateQuestionAndAnswer = () => {
+    const number = getRandomInt(maxGeneratedNumber);
     const isNumberEven = isEven(number);
-    const correctAnswer = baseGame.convertToAnswerString(isNumberEven);
+    const correctAnswer = convertToAnswerString(isNumberEven);
     const resultObject = {
       question: `${number}`,
       answer: correctAnswer,
@@ -25,7 +24,10 @@ const evenGame = (rightAnswersToWin = 3, maxGeneratedNumber = 100) => {
     return resultObject;
   };
 
-  return baseGame;
+  await baseGame(
+    'Answer "yes" if the number is even, otherwise answer "no".',
+    generateQuestionAndAnswer,
+  );
 };
 
 export default evenGame;
