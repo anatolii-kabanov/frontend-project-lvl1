@@ -1,5 +1,6 @@
 import baseGame from '../../common/game.js';
 import getRandomInt from '../../utils/random-int.js';
+import calculate from '../../utils/calculator.js';
 
 const mathSigns = {
   0: '+',
@@ -10,19 +11,6 @@ const mathSigns = {
 const maxGeneratedNumber = 100;
 
 const calcGame = async () => {
-  const calculate = (firstNumber, secondNumber, sign) => {
-    switch (sign) {
-      case '+':
-        return `${firstNumber + secondNumber}`;
-      case '-':
-        return `${firstNumber - secondNumber}`;
-      case '*':
-        return `${firstNumber * secondNumber}`;
-      default:
-        return null;
-    }
-  };
-
   const generateQuestionAndAnswer = () => {
     const firstNumber = getRandomInt(maxGeneratedNumber);
     const secondNumber = getRandomInt(maxGeneratedNumber);

@@ -1,13 +1,7 @@
 import baseGame from '../../common/game.js';
 import getRandomInt from '../../utils/random-int.js';
 import convertToAnswerString from '../../utils/boolean-to-yes-no-string.js';
-
-const isEven = (number) => {
-  if (typeof number !== 'number') {
-    throw new Error('Put number to this function');
-  }
-  return number % 2 === 0;
-};
+import isEven from '../../utils/is-even.js';
 
 const maxGeneratedNumber = 100;
 
