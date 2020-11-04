@@ -9,12 +9,10 @@ const generateQuestionAndAnswer = () => {
   const number = getRandomInt(maxGeneratedNumber);
   const isNumberEven = isEven(number);
   const correctAnswer = convertToAnswerString(isNumberEven);
-  const resultObject = {
+  return {
     question: `${number}`,
     answer: correctAnswer,
   };
-
-  return resultObject;
 };
 
 const runEvenGame = () => {

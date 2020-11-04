@@ -14,12 +14,10 @@ const generateQuestionAndAnswer = () => {
   const firstNumber = getRandomInt(maxGeneratedNumber);
   const secondNumber = getRandomInt(maxGeneratedNumber);
   const signToUse = mathSigns[getRandomInt(3)];
-  const resultObject = {
+  return {
     question: `${firstNumber} ${signToUse} ${secondNumber}`,
     answer: calculate(firstNumber, secondNumber, signToUse),
   };
-
-  return resultObject;
 };
 
 const runCalcGame = () => {

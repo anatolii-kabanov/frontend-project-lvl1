@@ -9,12 +9,10 @@ const generateQuestionAndAnswer = () => {
   const number = getRandomInt(maxGeneratedNumber);
   const isNumberPrime = isPrime(number);
   const correctAnswer = convertToAnswerString(isNumberPrime);
-  const resultObject = {
+  return {
     question: `${number}`,
     answer: correctAnswer,
   };
-
-  return resultObject;
 };
 
 const runPrimeGame = () => {

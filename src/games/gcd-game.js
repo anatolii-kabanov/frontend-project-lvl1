@@ -7,12 +7,10 @@ const maxGeneratedNumber = 100;
 const generateQuestionAndAnswer = () => {
   const firstNumber = getRandomInt(maxGeneratedNumber);
   const secondNumber = getRandomInt(maxGeneratedNumber);
-  const resultObject = {
+  return {
     question: `${firstNumber} ${secondNumber}`,
     answer: gcd(firstNumber, secondNumber),
   };
-
-  return resultObject;
 };
 
 const runGcdGame = () => {

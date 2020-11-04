@@ -14,12 +14,10 @@ const generateQuestionAndAnswer = () => {
   const arraySize = getRandomInt(options.maxItems, options.minItems);
   const indexToSkip = getRandomInt(arraySize - 1);
   const questionArray = Array.from(Array(arraySize)).map((_value, index) => (indexToSkip !== index ? startNumber + progressionNumber * index : '..'));
-  const resultObject = {
+  return {
     question: `${questionArray.join(' ')}`,
     answer: `${startNumber + progressionNumber * indexToSkip}`,
   };
-
-  return resultObject;
 };
 
 const runProgressionGame = () => {
