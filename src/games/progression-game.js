@@ -1,4 +1,4 @@
-import baseGame from '../common/game.js';
+import runGameEngine from '../common/game-engine.js';
 import getRandomInt from '../utils/random-int.js';
 
 const options = {
@@ -23,7 +23,7 @@ const generateQuestionAndAnswer = () => {
 const gameTaskMessage = 'What number is missing in the progression?';
 
 const runProgressionGame = () => {
-  baseGame(
+  runGameEngine(
     gameTaskMessage,
     generateQuestionAndAnswer,
   );

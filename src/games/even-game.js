@@ -1,4 +1,4 @@
-import baseGame from '../common/game.js';
+import runGameEngine from '../common/game-engine.js';
 import getRandomInt from '../utils/random-int.js';
 import convertToAnswerString from '../utils/boolean-to-yes-no-string.js';
 
@@ -24,7 +24,7 @@ const generateQuestionAndAnswer = () => {
 const gameTaskMessage = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const runEvenGame = () => {
-  baseGame(gameTaskMessage, generateQuestionAndAnswer);
+  runGameEngine(gameTaskMessage, generateQuestionAndAnswer);
 };
 
 export default runEvenGame;

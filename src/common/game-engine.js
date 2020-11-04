@@ -2,7 +2,7 @@ import promptly from 'promptly';
 
 const rightAnswersToWin = 3;
 
-const game = async (greetingsMessage, generateQuestionAndAnswer) => {
+const runGameEngine = async (greetingsMessage, generateQuestionAndAnswer) => {
   try {
     console.log('Welcome to the Brain Games!');
     const userName = await promptly.prompt('May I have your name? ');
@@ -28,4 +28,4 @@ const game = async (greetingsMessage, generateQuestionAndAnswer) => {
   }
 };
 
-export default game;
+export default runGameEngine;

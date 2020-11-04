@@ -1,4 +1,4 @@
-import baseGame from '../common/game.js';
+import runGameEngine from '../common/game-engine.js';
 import getRandomInt from '../utils/random-int.js';
 
 const mathSigns = {
@@ -35,7 +35,7 @@ const generateQuestionAndAnswer = () => {
 const gameTaskMessage = 'What is the result of the expression?';
 
 const runCalcGame = () => {
-  baseGame(gameTaskMessage, generateQuestionAndAnswer);
+  runGameEngine(gameTaskMessage, generateQuestionAndAnswer);
 };
 
 export default runCalcGame;
