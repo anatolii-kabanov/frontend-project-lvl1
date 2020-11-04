@@ -9,13 +9,13 @@ const game = async (greetingsMessage, generateQuestionAndAnswer) => {
     console.log(`Hello, ${userName}!`);
     console.log(greetingsMessage);
     for (let i = 0; i < rightAnswersToWin; i += 1) {
-      const qaObject = generateQuestionAndAnswer();
-      console.log(`Question: ${qaObject.question}`);
+      const { question, answer } = generateQuestionAndAnswer();
+      console.log(`Question: ${question}`);
       // eslint-disable-next-line no-await-in-loop
       const userAnswer = await promptly.prompt('Your answer: ');
-      if (qaObject.answer !== userAnswer) {
+      if (answer !== userAnswer) {
         console.log(
-          `'${userAnswer}' is wrong answer ;(. Correct answer was '${qaObject.answer}'.`,
+          `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.`,
         );
         console.log(`Let's try again, ${userName}!`);
         return;

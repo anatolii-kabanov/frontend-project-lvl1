@@ -15,14 +15,16 @@ const generateQuestionAndAnswer = () => {
   const indexToSkip = getRandomInt(arraySize - 1);
   const questionArray = Array.from(Array(arraySize)).map((_value, index) => (indexToSkip !== index ? startNumber + progressionNumber * index : '..'));
   return {
-    question: `${questionArray.join(' ')}`,
+    question: questionArray.join(' '),
     answer: `${startNumber + progressionNumber * indexToSkip}`,
   };
 };
 
+const gameTaskMessage = 'What number is missing in the progression?';
+
 const runProgressionGame = () => {
   baseGame(
-    'What number is missing in the progression?',
+    gameTaskMessage,
     generateQuestionAndAnswer,
   );
 };

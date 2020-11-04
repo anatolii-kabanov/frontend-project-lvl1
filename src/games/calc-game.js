@@ -1,6 +1,5 @@
 import baseGame from '../common/game.js';
 import getRandomInt from '../utils/random-int.js';
-import calculate from '../utils/calculator.js';
 
 const mathSigns = {
   0: '+',
@@ -9,6 +8,19 @@ const mathSigns = {
 };
 
 const maxGeneratedNumber = 100;
+
+const calculate = (firstNumber, secondNumber, sign) => {
+  switch (sign) {
+    case '+':
+      return `${firstNumber + secondNumber}`;
+    case '-':
+      return `${firstNumber - secondNumber}`;
+    case '*':
+      return `${firstNumber * secondNumber}`;
+    default:
+      return null;
+  }
+};
 
 const generateQuestionAndAnswer = () => {
   const firstNumber = getRandomInt(maxGeneratedNumber);
@@ -20,8 +32,10 @@ const generateQuestionAndAnswer = () => {
   };
 };
 
+const gameTaskMessage = 'What is the result of the expression?';
+
 const runCalcGame = () => {
-  baseGame('What is the result of the expression?', generateQuestionAndAnswer);
+  baseGame(gameTaskMessage, generateQuestionAndAnswer);
 };
 
 export default runCalcGame;

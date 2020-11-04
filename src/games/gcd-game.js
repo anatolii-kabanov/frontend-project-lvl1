@@ -1,8 +1,21 @@
 import baseGame from '../common/game.js';
 import getRandomInt from '../utils/random-int.js';
-import gcd from '../utils/gcd.js';
 
 const maxGeneratedNumber = 100;
+
+const gcd = (firstNumber, secondNumber) => {
+  if (typeof firstNumber !== 'number' || typeof secondNumber !== 'number') {
+    throw new Error('Put numbers to this function');
+  }
+  let x = Math.abs(firstNumber);
+  let y = Math.abs(secondNumber);
+  while (y) {
+    const temp = y;
+    y = x % y;
+    x = temp;
+  }
+  return `${x}`;
+};
 
 const generateQuestionAndAnswer = () => {
   const firstNumber = getRandomInt(maxGeneratedNumber);
@@ -13,11 +26,10 @@ const generateQuestionAndAnswer = () => {
   };
 };
 
+const gameTaskMessage = 'Find the greatest common divisor of given numbers.';
+
 const runGcdGame = () => {
-  baseGame(
-    'Find the greatest common divisor of given numbers.',
-    generateQuestionAndAnswer,
-  );
+  baseGame(gameTaskMessage, generateQuestionAndAnswer);
 };
 
 export default runGcdGame;
