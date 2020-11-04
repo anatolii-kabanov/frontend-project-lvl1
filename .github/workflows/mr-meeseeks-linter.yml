@@ -12,10 +12,6 @@ jobs:
         node-version: [15.x]
 
     steps:
-      - name: Set git to use CRLF
-        run: |
-          git config --global core.autocrlf true
-          git config --global core.eol crlf
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup node
