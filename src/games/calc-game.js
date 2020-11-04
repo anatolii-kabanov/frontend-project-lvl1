@@ -25,7 +25,7 @@ const calculate = (firstNumber, secondNumber, sign) => {
 const generateQuestionAndAnswer = () => {
   const firstNumber = getRandomInt(maxGeneratedNumber);
   const secondNumber = getRandomInt(maxGeneratedNumber);
-  const signToUse = mathSigns[getRandomInt(3)];
+  const signToUse = mathSigns[getRandomInt(2)];
   return {
     question: `${firstNumber} ${signToUse} ${secondNumber}`,
     answer: calculate(firstNumber, secondNumber, signToUse),
