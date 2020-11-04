@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import calcGame from '../src/games/calc-game/calc-game.js';
+import runCalcGame from '../src/games/calc-game.js';
 
-(async () => {
-  await calcGame();
-})();
+runCalcGame();

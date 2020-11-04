@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-import gcdGame from '../src/games/gcd-game/gcd-game.js';
+import runGcdGame from '../src/games/gcd-game.js';
 
-(async () => {
-  await gcdGame();
-})();
+runGcdGame();
