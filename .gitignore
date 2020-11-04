@@ -1,2 +1,4 @@
 # dependencies
-/node_modules
+# ignore node_modules directory, actually have not been thinking that for the reserved name we should do it 
+# files have extensions, so they will not be ignored
+/node_modules/
