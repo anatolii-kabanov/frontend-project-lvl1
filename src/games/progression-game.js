@@ -8,15 +8,25 @@ const options = {
 
 const maxGeneratedNumber = 100;
 
+const getProgression = (firstStep, step, progressionLength) => {
+  const progression = [];
+  for (let i = 0; i < progressionLength; i += 1) {
+    progression.push(firstStep + step * i);
+  }
+  return progression;
+};
+
 const generateQuestionAndAnswer = () => {
-  const startNumber = getRandomInt(maxGeneratedNumber);
-  const progressionNumber = getRandomInt(maxGeneratedNumber);
-  const arraySize = getRandomInt(options.maxItems, options.minItems);
-  const indexToSkip = getRandomInt(arraySize - 1);
-  const questionArray = Array.from(Array(arraySize)).map((_value, index) => (indexToSkip !== index ? startNumber + progressionNumber * index : '..'));
+  const firstStep = getRandomInt(maxGeneratedNumber);
+  const step = getRandomInt(maxGeneratedNumber);
+  const progressionLength = getRandomInt(options.maxItems, options.minItems);
+  const indexToSkip = getRandomInt(progressionLength - 1);
+  const progression = getProgression(firstStep, step, progressionLength);
+  const answer = progression[indexToSkip];
+  progression[indexToSkip] = '..';
   return {
-    question: questionArray.join(' '),
-    answer: `${startNumber + progressionNumber * indexToSkip}`,
+    question: progression.join(' '),
+    answer: answer.toString(),
   };
 };
 
