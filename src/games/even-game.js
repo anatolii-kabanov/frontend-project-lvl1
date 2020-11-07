@@ -1,6 +1,5 @@
 import runGameEngine from '../common/game-engine.js';
 import getRandomInt from '../utils/random-int.js';
-import convertToAnswerString from '../utils/boolean-to-yes-no-string.js';
 
 const maxGeneratedNumber = 100;
 
@@ -11,10 +10,15 @@ const isEven = (number) => {
   return number % 2 === 0;
 };
 
+const answer = {
+  YES: 'yes',
+  NO: 'no',
+};
+
 const generateQuestionAndAnswer = () => {
   const number = getRandomInt(maxGeneratedNumber);
   const isNumberEven = isEven(number);
-  const correctAnswer = convertToAnswerString(isNumberEven);
+  const correctAnswer = isNumberEven ? answer.YES : answer.NO;
   return {
     question: number.toString(),
     answer: correctAnswer,

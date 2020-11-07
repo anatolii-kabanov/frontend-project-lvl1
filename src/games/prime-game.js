@@ -1,6 +1,5 @@
 import runGameEngine from '../common/game-engine.js';
 import getRandomInt from '../utils/random-int.js';
-import convertToAnswerString from '../utils/boolean-to-yes-no-string.js';
 
 const maxGeneratedNumber = 100;
 
@@ -15,10 +14,15 @@ const isPrime = (number) => {
   return number > 1;
 };
 
+const answer = {
+  YES: 'yes',
+  NO: 'no',
+};
+
 const generateQuestionAndAnswer = () => {
   const number = getRandomInt(maxGeneratedNumber);
   const isNumberPrime = isPrime(number);
-  const correctAnswer = convertToAnswerString(isNumberPrime);
+  const correctAnswer = isNumberPrime ? answer.YES : answer.NO;
   return {
     question: number.toString(),
     answer: correctAnswer,
