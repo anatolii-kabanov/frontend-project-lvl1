@@ -1,5 +1,5 @@
-const getRandomInt = (max = Number.MAX_SAFE_INTEGER, startNumber = 0) => {
-  const minNumber = Math.floor(startNumber);
+const getRandomInt = (max = Number.MAX_SAFE_INTEGER, min = 0) => {
+  const minNumber = Math.floor(min);
   const maxNumber = Math.floor(max);
   if (maxNumber < minNumber) {
     throw new Error(
