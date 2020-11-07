@@ -2,12 +2,12 @@ import promptly from 'promptly';
 
 const rightAnswersToWin = 3;
 
-const runGameEngine = async (greetingsMessage, generateQuestionAndAnswer) => {
+const runGameEngine = async (gameTaskMessage, generateQuestionAndAnswer) => {
   try {
     console.log('Welcome to the Brain Games!');
     const userName = await promptly.prompt('May I have your name? ');
     console.log(`Hello, ${userName}!`);
-    console.log(greetingsMessage);
+    console.log(gameTaskMessage);
     for (let i = 0; i < rightAnswersToWin; i += 1) {
       const { question, answer } = generateQuestionAndAnswer();
       console.log(`Question: ${question}`);
