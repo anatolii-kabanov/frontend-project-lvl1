@@ -14,7 +14,7 @@ const gcd = (firstNumber, secondNumber) => {
     y = x % y;
     x = temp;
   }
-  return `${x}`;
+  return x;
 };
 
 const generateQuestionAndAnswer = () => {
@@ -22,7 +22,7 @@ const generateQuestionAndAnswer = () => {
   const secondNumber = getRandomInt(maxGeneratedNumber);
   return {
     question: `${firstNumber} ${secondNumber}`,
-    answer: gcd(firstNumber, secondNumber),
+    answer: gcd(firstNumber, secondNumber).toString(),
   };
 };
 
