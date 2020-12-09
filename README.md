@@ -3,7 +3,7 @@
 ### CodeClimate
 [![Maintainability](https://api.codeclimate.com/v1/badges/0e6afa18df14c541cbdc/maintainability)](https://codeclimate.com/github/mr-meeseeks-code/frontend-project-lvl1/maintainability)
 ### mr-meeseeks eslint
-[![mr-meeseeks eslint status](https://github.com/mr-meeseeks-code/frontend-project-lvl1/workflows/mr-meeseeks-linter/badge.svg)](https://github.com/mr-meeseeks-code/frontend-project-lvl1/actions)
+[![mr-meeseeks eslint status](https://github.com/mr-meeseeks-code/frontend-project-lvl1/workflows/mr-meeseeks-linter/badge.svg)]
 ### brain-calc
 [![asciicast](https://asciinema.org/a/qja4VuKp9QoJETl62PppRsYA9.svg)](https://asciinema.org/a/qja4VuKp9QoJETl62PppRsYA9)
 ### brain-even
